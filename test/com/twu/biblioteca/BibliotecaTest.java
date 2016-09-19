@@ -1,15 +1,13 @@
 package com.twu.biblioteca;
 
-import org.hamcrest.CoreMatchers;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.contrib.java.lang.system.SystemOutRule;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-import com.twu.biblioteca.*;
-import org.junit.contrib.java.lang.system.SystemOutRule;
 
 public class BibliotecaTest {
     private BibliotecaApp library = new BibliotecaApp();
@@ -40,16 +38,16 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void ShouldShowBookList(){
+    public void ShouldShowBookList() {
         library.bookList();
         assertEquals(bookMessage, systemOutRule.getLog());
     }
 
     @Test
-    public void ShouldHaveBookDetails(){
+    public void ShouldHaveBookDetails() {
         library.bookList();
-        assertThat(bookMessage,containsString("name"));
-        assertThat(bookMessage,containsString("year"));
-        assertThat(bookMessage,containsString("author"));
+        assertThat(bookMessage, containsString("name"));
+        assertThat(bookMessage, containsString("year"));
+        assertThat(bookMessage, containsString("author"));
     }
 }
