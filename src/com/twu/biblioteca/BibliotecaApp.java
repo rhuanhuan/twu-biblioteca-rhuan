@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import java.util.Scanner;
+
 public class BibliotecaApp {
 
     private String[] bookMessage ={ "name: Rails之道, year: 2000, author: (美)Obie Fernandez",
@@ -29,5 +31,11 @@ public class BibliotecaApp {
         for (circleCounter=0;circleCounter<listLength;circleCounter++){
             System.out.println(bookMessage[circleCounter]);
         }
+    }
+
+    public void libraryMenu(){
+        System.out.println("------------------");
+        System.out.println("----Main  Menu----");
+        System.out.println("------------------");
     }
 }
