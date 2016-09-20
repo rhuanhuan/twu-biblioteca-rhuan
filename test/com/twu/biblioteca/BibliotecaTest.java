@@ -4,6 +4,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.SystemOutRule;
 
+import java.io.ByteArrayInputStream;
+
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -50,4 +52,45 @@ public class BibliotecaTest {
         assertThat(bookMessage, containsString("year"));
         assertThat(bookMessage, containsString("author"));
     }
+
+    @Test
+    public void ShouldSeeMainMenuAndRaiseAnExceptionWhenInputWrongMessageInMenue(){
+        ByteArrayInputStream in = new ByteArrayInputStream("My string".getBytes());
+        System.setIn(in);
+        library.libraryMenu();
+        assertThat(systemOutRule.getLog(), containsString("Main  Menu"));
+        assertThat(systemOutRule.getLog(), containsString("Select a valid option!"));
+    }
+
+    @Test
+    public void ShouldShowBookeListWhenInputBookList(){
+        ByteArrayInputStream in = new ByteArrayInputStream("List Books".getBytes());
+        System.setIn(in);
+        library.libraryMenu();
+        assertThat(systemOutRule.getLog(), containsString(bookMessage));
+    }
+
+    @Test
+    public void ShouldQuitWhenInputQuit(){
+        ByteArrayInputStream in = new ByteArrayInputStream("Quit".getBytes());
+        System.setIn(in);
+        library.libraryMenu();
+        assertThat(systemOutRule.getLog(), containsString("Thank you for use!"));
+    }
+
+    @Test
+    public void CustomerShouldAbleToCheckOutBooks(){
+
+    }
+
+    @Test
+    public void CustomerShouldAbleToSeeSuccessfulMessageWhenCheckOutBooksSucceed(){
+
+    }
+
+    @Test
+    public void CustomerShouldAbleToSeeUnsuccessfulMessageWhenCheckOutBooksFailed(){
+
+    }
+
 }
