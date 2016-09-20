@@ -1,10 +1,11 @@
 package com.twu.biblioteca;
 
+import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
 public class BibliotecaApp {
 
-    private String[] bookMessage ={ "name: Rails之道, year: 2000, author: (美)Obie Fernandez",
+    private String[] bookMessage = {"name: Rails之道, year: 2000, author: (美)Obie Fernandez",
             "name: Programming Ruby中文版, year: 2000, author: 托马斯",
             "name: Ruby编程语言,year: 2000, author: 松本行弘",
             "name: Ruby for Rails中文版,year: 2000, author: David Black",
@@ -18,24 +19,32 @@ public class BibliotecaApp {
             "name: 冰与火之歌（卷一）,year: 2000, author: [美] 乔治·R. R. 马丁",
             "name: 哈利·波特与魔法石,year: 2000, author: [英] J. K. 罗琳",
             "name: 华胥引（全二册）, year: 2000, author: 唐七公子",
-            "name: 盗墓笔记, year: 2000, author: 南派三叔" };
+            "name: 盗墓笔记, year: 2000, author: 南派三叔"};
     private int listLength = bookMessage.length;
     private String welcomeMessage = "Welcome to our library!";
 
-    public void ShowWelcomeMessage(){
+    public void ShowWelcomeMessage() {
         System.out.println(welcomeMessage);
     }
 
-    public void bookList(){
+    public void bookList() {
         int circleCounter;
-        for (circleCounter=0;circleCounter<listLength;circleCounter++){
+        for (circleCounter = 0; circleCounter < listLength; circleCounter++) {
             System.out.println(bookMessage[circleCounter]);
         }
     }
 
-    public void libraryMenu(){
-        System.out.println("------------------");
-        System.out.println("----Main  Menu----");
-        System.out.println("------------------");
+    public void libraryMenu() {
+        System.out.println("------------------\n" + "----Main  Menu----\n" + "------------------");
+        Scanner scan = new Scanner(System.in);
+        String menuCommand = scan.nextLine();
+        if (menuCommand.equals("List Books")) {
+            bookList();
+        } else if (menuCommand.equals("Quit")) {
+            System.out.println("Thank you for use!");
+        } else {
+            System.out.println("Select a valid option!");
+        }
     }
+
 }
