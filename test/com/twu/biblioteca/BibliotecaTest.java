@@ -10,7 +10,6 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-
 public class BibliotecaTest {
     private BibliotecaApp library = new BibliotecaApp();
     private String bookMessage = "name: Rails之道, year: 2000, author: (美)Obie Fernandez\n" +

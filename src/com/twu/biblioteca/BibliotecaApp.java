@@ -3,6 +3,32 @@ package com.twu.biblioteca;
 import java.io.ByteArrayInputStream;
 import java.util.Scanner;
 
+
+class Book {
+    private String name;
+    private int year;
+    private String author;
+    private String status;
+
+    public Book(String name, int year, String author, String status) {
+        name = this.name;
+        year = this.year;
+        author = this.author;
+        status = this.status;
+        switch (status){
+            case "Allowed":
+                status = "Allowed";
+                break;
+            case "Denied":
+                status = "Denied";
+                break;
+            default:
+                status ="Allowed";
+                break;
+        }
+    }
+}
+
 public class BibliotecaApp {
 
     private String[] bookMessage = {"name: Rails之道, year: 2000, author: (美)Obie Fernandez",
@@ -27,7 +53,18 @@ public class BibliotecaApp {
         System.out.println(welcomeMessage);
     }
 
+//    private Book getBookList(){
+//        Book bookInfo[];
+//        int bookLength = bookMessage.length;
+//        int i;
+//        for (i=0;i<bookLength;i++){
+//            bookInfo[i] = Book();
+//        }
+//        return bookInfo;
+//    }
+
     public void bookList() {
+//        JSONArray jsonArray1 = JSONArray.fromObject(bookMessage);
         int circleCounter;
         for (circleCounter = 0; circleCounter < listLength; circleCounter++) {
             System.out.println(bookMessage[circleCounter]);
@@ -46,5 +83,4 @@ public class BibliotecaApp {
             System.out.println("Select a valid option!");
         }
     }
-
 }
