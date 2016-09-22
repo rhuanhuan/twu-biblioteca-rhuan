@@ -28,6 +28,14 @@ public class BibliotecaApp {
         }
     }
 
+    private void checkOut(){
+
+    }
+
+    private void returnBook(){
+
+    }
+
     public void libraryMenu() {
         label:
         while (true) {

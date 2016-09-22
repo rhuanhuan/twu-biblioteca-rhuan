@@ -3,31 +3,37 @@ package com.twu.biblioteca;
 
 public class Book {
     private String name;
-    private int year;
+    private String year;
     private String author;
     private String status;
 
-    public Book(String name, int year, String author, String status) {
-        name = this.name;
-        year = this.year;
-        author = this.author;
-        status = this.status;
+    public Book(String name, String year, String author) {
+        this.name = name;
+        this.year = year;
+        this.author = author;
+        this.status = "Allowed";
     }
 
-    public void  name(){
-        name = this.name;
+    public String getName() {
+        return this.name;
+    }
+    public String getYear() {
+        return this.year;
+    }
+    public String getAuthor() {
+        return this.author;
     }
 
-    public void status(){
-        status = this.status;
+    public String getStatus() {
+        return this.status;
     }
 
-    public void changeStatus(){
-        if (this.status.equals("Allowed")){
-            this.status = "Denied";
-        }
-        if (this.status.equals("Denied")){
-            this.status = "Allowed";
+    public void changeStatus() {
+        switch (this.status){
+            case "Allowed":
+                this.status = "Denied";
+            case "Denied":
+                this.status = "Allowed";
         }
     }
 }
