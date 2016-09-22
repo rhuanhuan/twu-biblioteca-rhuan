@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class Application{
     public static void main(String args[]){
         BibliotecaApp library = new BibliotecaApp();
-        library.ShowWelcomeMessage();
         library.libraryMenu();
     }
 }

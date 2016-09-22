@@ -11,32 +11,13 @@ import net.sf.json.JSONObject;
 
 public class BibliotecaApp {
 
-    public void ShowWelcomeMessage() {
+    private void showWelcomeMessage() {
         String welcomeMessage = "Welcome to our library!";
         System.out.println(welcomeMessage);
     }
 
-    public void bookList() {
-        String JsonContext = new ReadJson().ReadFile("/Users/rhuan/IdeaProjects/TWU_Biblioteca-master/book.json");
-        JSONArray bookMessage = JSONArray.fromObject(JsonContext);
-        int circleCounter, listLength = bookMessage.size();
-        for (circleCounter = 0; circleCounter < listLength; circleCounter++) {
-            JSONObject jsonObject = bookMessage.getJSONObject(circleCounter);
-            System.out.print("name:" + jsonObject.get("name")+ ", " );
-            System.out.print("year:" + jsonObject.get("year")+ ", " );
-            System.out.print("author:" + jsonObject.get("author")+ "\n" );
-        }
-    }
-
-    private void checkOut(){
-
-    }
-
-    private void returnBook(){
-
-    }
-
     public void libraryMenu() {
+        showWelcomeMessage();
         label:
         while (true) {
             System.out.println("------------------\n" + "----Main  Menu----\n" + "------------------");
@@ -54,6 +35,29 @@ public class BibliotecaApp {
                     break;
             }
         }
+    }
+
+    public void bookList() {
+        String JsonContext = new ReadJson().ReadFile("/Users/rhuan/IdeaProjects/TWU_Biblioteca-master/book.json");
+        JSONArray bookMessage = JSONArray.fromObject(JsonContext);
+        int circleCounter, listLength = bookMessage.size();
+        for (circleCounter = 0; circleCounter < listLength; circleCounter++) {
+            JSONObject jsonObject = bookMessage.getJSONObject(circleCounter);
+            System.out.print("name:" + jsonObject.get("name")+ ", " );
+            System.out.print("year:" + jsonObject.get("year")+ ", " );
+            System.out.print("author:" + jsonObject.get("author")+ "\n" );
+        }
+    }
+
+
+
+    private void checkOut(){
 
     }
+
+    private void returnBook(){
+
+    }
+
+
 }
