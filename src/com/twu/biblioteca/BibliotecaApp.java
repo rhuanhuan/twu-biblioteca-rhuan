@@ -11,6 +11,18 @@ import net.sf.json.JSONObject;
 
 public class BibliotecaApp {
 
+    private Book[] initialBooks(){
+        String JsonContext = new ReadJson().ReadFile("/Users/rhuan/IdeaProjects/TWU_Biblioteca-master/book.json");
+        JSONArray bookMessage = JSONArray.fromObject(JsonContext);
+        int circleCounter, listLength = bookMessage.size();
+        Book[] bookInfo = new Book[listLength];
+        for (circleCounter = 0; circleCounter < listLength; circleCounter++){
+            JSONObject jsonObject = bookMessage.getJSONObject(circleCounter);
+            bookInfo[circleCounter] = new Book(jsonObject.get("name").toString(),jsonObject.get("year").toString(),jsonObject.get("author").toString());
+        }
+        return bookInfo;
+    }
+
     private void showWelcomeMessage() {
         String welcomeMessage = "Welcome to our library!";
         System.out.println(welcomeMessage);
@@ -18,6 +30,7 @@ public class BibliotecaApp {
 
     public void libraryMenu() {
         showWelcomeMessage();
+        Book[] bookInfo = initialBooks();
         label:
         while (true) {
             System.out.println("------------------\n" + "----Main  Menu----\n" + "------------------");
@@ -25,7 +38,7 @@ public class BibliotecaApp {
             String menuCommand = scan.nextLine();
             switch (menuCommand) {
                 case "List Books":
-                    bookList();
+                    bookList(bookInfo);
                     break label;
                 case "Quit":
                     System.out.println("Thank you for use!");
@@ -37,15 +50,14 @@ public class BibliotecaApp {
         }
     }
 
-    public void bookList() {
-        String JsonContext = new ReadJson().ReadFile("/Users/rhuan/IdeaProjects/TWU_Biblioteca-master/book.json");
-        JSONArray bookMessage = JSONArray.fromObject(JsonContext);
-        int circleCounter, listLength = bookMessage.size();
+    private void bookList(Book[] bookInfo) {
+        int circleCounter, listLength = bookInfo.length;
         for (circleCounter = 0; circleCounter < listLength; circleCounter++) {
-            JSONObject jsonObject = bookMessage.getJSONObject(circleCounter);
-            System.out.print("name:" + jsonObject.get("name")+ ", " );
-            System.out.print("year:" + jsonObject.get("year")+ ", " );
-            System.out.print("author:" + jsonObject.get("author")+ "\n" );
+            if (bookInfo[circleCounter].getStatus()=="Allowed"){
+                System.out.print("name:" + bookInfo[circleCounter].getName()+ ", " );
+                System.out.print("year:" + bookInfo[circleCounter].getYear()+ ", " );
+                System.out.print("author:" + bookInfo[circleCounter].getAuthor()+ "\n" );
+            }
         }
     }
 
