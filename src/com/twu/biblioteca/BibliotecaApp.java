@@ -110,6 +110,9 @@ public class BibliotecaApp {
                 System.out.println("Thank you! Enjoy the book");
                 checkedBook.changeStatus();
             }
+            else if (checkedBook!=null &&(Objects.equals(checkedBook.getStatus(), "Denied"))){
+                System.out.println("The book had been borrowed");
+            }
             else if (Objects.equals(checkCommand, "Back")){
                 bookList(bookInfo);
                 break;
