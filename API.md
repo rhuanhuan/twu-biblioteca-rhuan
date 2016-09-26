@@ -1,15 +1,17 @@
-**Biblioteca API**
+#Biblioteca API
 
-**Welcome message and Main Menu**
+##Welcome message and Main Menu
 
 When you start the application, you will see welcome message and main menu:
 
-`Welcome to our library!`
-`------------------`
-`----Main  Menu----`
-`------------------`
+```
+Welcome to our library!
+------------------
+----Main  Menu----
+------------------
+```
 
-**_Commands _**
+###Commands
 
 **`List Books`**
 Show book list
@@ -22,17 +24,19 @@ Select a valid option!
 
 ---------------------
 
-**Book List**
+##Book List
 
 When you list the books, you will see
 
-`******************`
-`----Books List----`
-`******************`
+```
+******************
+----Books List----
+******************
+```
 
 and book infomation which can be checked out.
 
-**_Commands _**
+###Commands 
 
 **`Checkout`**
 
@@ -52,7 +56,7 @@ Invalid option!
 
 --------------------------
 
-**Checkout** 
+##Checkout
 
 When you choose checkout in the booklist, you will see checkout page
 
@@ -60,7 +64,7 @@ When you choose checkout in the booklist, you will see checkout page
 `#Check your boooks#`
 `*******************`
 
-**_Commands _**
+###Commands 
 
 **`#bookname`**
 
@@ -78,7 +82,7 @@ It will return to the book list page.
 
 -------------------------------------------
 
-**Return**
+##Return
 
 When you choose Return in the booklist, you will see return page
 
@@ -86,7 +90,7 @@ When you choose Return in the booklist, you will see return page
 `#Return your books#`
 `********************`
 
-**_Commands _**
+###Commands
 
 **`#bookname`**
 
