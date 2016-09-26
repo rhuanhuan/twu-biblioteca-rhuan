@@ -1,6 +1,8 @@
 package com.twu.biblioteca;
 
 
+import java.util.Objects;
+
 public class Book {
     private String name;
     private String year;
@@ -29,12 +31,10 @@ public class Book {
     }
 
     public void changeStatus() {
-        switch (this.status){
-            case "Allowed":
+        if (Objects.equals(this.status, "Allowed"))
                 this.status = "Denied";
-            case "Denied":
+        else if (Objects.equals(this.status, "Denied"))
                 this.status = "Allowed";
-        }
     }
 }
 
