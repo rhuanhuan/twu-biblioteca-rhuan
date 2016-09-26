@@ -2,12 +2,9 @@ package com.twu.biblioteca;
 
 import net.sf.json.JSONArray;
 
-import java.io.ByteArrayInputStream;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
-import com.twu.biblioteca.Book;
 import net.sf.json.JSONObject;
 
 public class BibliotecaApp {
@@ -26,6 +23,23 @@ public class BibliotecaApp {
             bookInfo[circleCounter] = new Book(jsonObject.get("name").toString(),jsonObject.get("year").toString(),jsonObject.get("author").toString());
         }
         return bookInfo;
+    }
+
+    private String[] bookNameList(){
+        String[] bookNameList = new String[listSize];
+        for (int i=0; i<listSize; i++){
+            bookNameList[i]=bookInfo[i].getName();
+        }
+        return bookNameList;
+    }
+
+    private Book searchBookByName(String name){
+        for (int i=0; i<listSize; i++){
+            if (Objects.equals(name,bookInfo[i].getName())){
+                return bookInfo[i];
+            }
+        }
+        return null;
     }
 
     private void showWelcomeMessage() {
@@ -84,25 +98,9 @@ public class BibliotecaApp {
         }
     }
 
-    private String[] bookNameList(){
-        String[] bookNameList = new String[listSize];
-        for (int i=0; i<listSize; i++){
-            bookNameList[i]=bookInfo[i].getName();
-        }
-        return bookNameList;
-    }
-
-    private Book searchBookByName(String name){
-        for (int i=0; i<listSize; i++){
-            if (Objects.equals(name,bookInfo[i].getName())){
-                return bookInfo[i];
-            }
-        }
-        return null;
-    }
 
     private void checkOut(){
-        System.out.println("###################\n" + "#Check your boooks#\n" + "*******************");
+        System.out.println("###################\n" + "#Check your books#\n" + "*******************");
         String[] bookNameInfo = bookNameList();
         while (true){
             Scanner scan = new Scanner(System.in);
@@ -111,7 +109,6 @@ public class BibliotecaApp {
             if (checkedBook!=null &&(Objects.equals(checkedBook.getStatus(), "Allowed"))){
                 System.out.println("Thank you! Enjoy the book");
                 checkedBook.changeStatus();
-                System.out.println(checkedBook.getStatus());
             }
             else if (Objects.equals(checkCommand, "Back")){
                 bookList(bookInfo);
@@ -124,7 +121,7 @@ public class BibliotecaApp {
     }
 
     private void returnBook(){
-        System.out.println("###################\n" + "#Return your boooks#\n" + "*******************");
+        System.out.println("###################\n" + "#Return your books#\n" + "*******************");
         String[] bookNameInfo = bookNameList();
         while (true){
             Scanner scan = new Scanner(System.in);
