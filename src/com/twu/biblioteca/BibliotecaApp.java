@@ -16,18 +16,19 @@ public class BibliotecaApp {
         System.out.println(welcomeMessage);
     }
 
-    private void listBookMessage(Book[] bookInfo) {
+    private void listBookMessage() {
         System.out.println("******************\n" + "----Books List----\n" + "******************");
-        int listLength = bookInfo.length;
+        int listLength = bookInfo.getListSize();
+        Book[] bookMessage = bookInfo.getbooksMessage();
         for (int i = 0; i < listLength; i++) {
-            if ("Allowed".equals(bookInfo[i].getStatus())) {
-                System.out.print("name:" + bookInfo[i].getName() + ", " + "year:" + bookInfo[i].getYear() + ", " + "author:" + bookInfo[i].getAuthor() + "\n");
+            if ("Allowed".equals(bookMessage[i].getStatus())) {
+                System.out.print("name:" + bookMessage[i].getName() + ", " + "year:" + bookMessage[i].getYear() + ", " + "author:" + bookMessage[i].getAuthor() + "\n");
             }
         }
     }
 
     private void bookList(Book[] bookInfo) {
-        listBookMessage(bookInfo);
+        listBookMessage();
         listLabel:
         while (true) {
             Scanner scan = new Scanner(System.in);
@@ -43,27 +44,6 @@ public class BibliotecaApp {
                     break listLabel;
                 default:
                     System.out.println("Invalid option!");
-                    break;
-            }
-        }
-    }
-
-    public void libraryMenu() {
-        showWelcomeMessage();
-        label:
-        while (true) {
-            System.out.println("------------------\n" + "----Main  Menu----\n" + "------------------");
-            Scanner scan = new Scanner(System.in);
-            String menuCommand = scan.nextLine();
-            switch (menuCommand) {
-                case "List Books":
-                    bookList(bookInfo.getbooksMessage());
-                    break label;
-                case "Quit":
-                    System.out.println("Thank you for use!");
-                    break label;
-                default:
-                    System.out.println("Select a valid option!");
                     break;
             }
         }
@@ -108,4 +88,26 @@ public class BibliotecaApp {
             }
         }
     }
+
+    public void libraryMenu() {
+        showWelcomeMessage();
+        label:
+        while (true) {
+            System.out.println("------------------\n" + "----Main  Menu----\n" + "------------------");
+            Scanner scan = new Scanner(System.in);
+            String menuCommand = scan.nextLine();
+            switch (menuCommand) {
+                case "List Books":
+                    bookList(bookInfo.getbooksMessage());
+                    break label;
+                case "Quit":
+                    System.out.println("Thank you for use!");
+                    break label;
+                default:
+                    System.out.println("Select a valid option!");
+                    break;
+            }
+        }
+    }
+
 }
