@@ -3,9 +3,6 @@ package com.twu.biblioteca;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import java.util.Objects;
-import java.util.Scanner;
-
 class BookList {
 
     private Book[] booksMessage;

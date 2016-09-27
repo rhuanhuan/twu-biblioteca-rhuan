@@ -1,11 +1,7 @@
 package com.twu.biblioteca;
 
-import net.sf.json.JSONArray;
-
 import java.util.Objects;
 import java.util.Scanner;
-
-import net.sf.json.JSONObject;
 
 public class BibliotecaApp {
 
