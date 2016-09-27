@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class Application{
     public static void main(String args[]){
-        BibliotecaApp library = new BibliotecaApp();
+        String path = "/Users/rhuan/IdeaProjects/TWU_Biblioteca-master/book.json";
+        BibliotecaApp library = new BibliotecaApp(path);
         library.libraryMenu();
     }
 }

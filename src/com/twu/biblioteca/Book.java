@@ -31,6 +31,7 @@ class Book {
     }
 
     void changeStatus() {
+//        this.status.equals("Denied") ? (this.status = "Allowed") :(this.status = "Denied");
         if (Objects.equals(this.status, "Allowed"))
                 this.status = "Denied";
         else if (Objects.equals(this.status, "Denied"))
