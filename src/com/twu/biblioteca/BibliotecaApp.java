@@ -11,12 +11,12 @@ public class BibliotecaApp {
         this.bookInfo = new BookList(path);
     }
 
-    private void showWelcomeMessage() {
+    public void showWelcomeMessage() {
         String welcomeMessage = "Welcome to our library!";
         System.out.println(welcomeMessage);
     }
 
-    private void listBookMessage() {
+    public void listBookMessage() {
         System.out.println("******************\n" + "----Books List----\n" + "******************");
         int listLength = bookInfo.getListSize();
         Book[] bookMessage = bookInfo.getbooksMessage();
@@ -27,7 +27,7 @@ public class BibliotecaApp {
         }
     }
 
-    private void bookList(Book[] bookInfo) {
+    public void bookList() {
         listBookMessage();
         listLabel:
         while (true) {
@@ -49,7 +49,7 @@ public class BibliotecaApp {
         }
     }
 
-    private void checkOut() {
+    public void checkOut() {
         System.out.println("###################\n" + "#Check your books#\n" + "*******************");
         String[] bookNameInfo = bookInfo.getNameList();
         while (true) {
@@ -62,7 +62,7 @@ public class BibliotecaApp {
             } else if (checkedBook != null && (Objects.equals(checkedBook.getStatus(), "Denied"))) {
                 System.out.println("The book had been borrowed");
             } else if (Objects.equals(checkCommand, "Back")) {
-                bookList(bookInfo.getbooksMessage());
+                bookList();
                 break;
             } else {
                 System.out.println("That book is not available.");
@@ -70,7 +70,7 @@ public class BibliotecaApp {
         }
     }
 
-    private void returnBook() {
+    public void returnBook() {
         System.out.println("###################\n" + "#Return your books#\n" + "*******************");
         String[] bookNameInfo = bookInfo.getNameList();
         while (true) {
@@ -81,7 +81,7 @@ public class BibliotecaApp {
                 System.out.println("Thank you for returning the book.");
                 returnedBook.changeStatus();
             } else if (returnCommand.equals("Back")) {
-                bookList(bookInfo.getbooksMessage());
+                bookList();
                 break;
             } else {
                 System.out.println("That is not a valid book to return.");
@@ -89,25 +89,28 @@ public class BibliotecaApp {
         }
     }
 
-    public void libraryMenu() {
-        showWelcomeMessage();
-        label:
-        while (true) {
-            System.out.println("------------------\n" + "----Main  Menu----\n" + "------------------");
-            Scanner scan = new Scanner(System.in);
-            String menuCommand = scan.nextLine();
-            switch (menuCommand) {
-                case "List Books":
-                    bookList(bookInfo.getbooksMessage());
-                    break label;
-                case "Quit":
-                    System.out.println("Thank you for use!");
-                    break label;
-                default:
-                    System.out.println("Select a valid option!");
-                    break;
-            }
+    public String menuCommand(){
+        Scanner scan = new Scanner(System.in);
+        String menuCommand = scan.nextLine();
+        switch (menuCommand) {
+            case "List Books":
+                bookList();
+                return null;
+            case "Quit":
+                System.out.println("Thank you for use!");
+                return null;
+            default:
+                System.out.println("Select a valid option!");
+                return "Not null";
         }
     }
 
+    public void libraryMenu() {
+        showWelcomeMessage();
+        System.out.println("------------------\n" + "----Main  Menu----\n" + "------------------");
+        String controller="Not null";
+        while (controller!=null) {
+            controller=menuCommand();
+        }
+    }
 }
