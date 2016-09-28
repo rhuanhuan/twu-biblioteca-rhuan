@@ -88,7 +88,7 @@ public class BibliotecaApp {
         }
     }
 
-    public void libraryMenu() {
+    public void mainMenu() {
         showWelcomeMessage();
         System.out.println("------------------\n" + "----Main  Menu----\n" + "------------------");
         label:

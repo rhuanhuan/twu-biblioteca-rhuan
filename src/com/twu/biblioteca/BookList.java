@@ -11,13 +11,12 @@ class BookList {
     BookList(String path){
         String JsonContext = new ReadJson().ReadFile(path);
         JSONArray bookMessage = JSONArray.fromObject(JsonContext);
-        int circleCounter, listLength = bookMessage.size();
+        int listLength = bookMessage.size();
         Book[] bookInfo = new Book[listLength];
-        for (circleCounter = 0; circleCounter < listLength; circleCounter++){
-            JSONObject jsonObject = bookMessage.getJSONObject(circleCounter);
-            bookInfo[circleCounter] = new Book(jsonObject.get("name").toString(),jsonObject.get("year").toString(),jsonObject.get("author").toString());
+        for (int i = 0; i < listLength; i++){
+            JSONObject jsonObject = bookMessage.getJSONObject(i);
+            bookInfo[i] = new Book(jsonObject.get("name").toString(),jsonObject.get("year").toString(),jsonObject.get("author").toString());
         }
-
         this.booksMessage = bookInfo;
         this.listSize = bookInfo.length;
     }
