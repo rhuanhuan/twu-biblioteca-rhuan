@@ -94,18 +94,70 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void CustomerShouldAbleToCheckOutBooks(){
-
+    public void ShouldBeAbleToCheckoutBook(){
+        ByteArrayInputStream in = new ByteArrayInputStream("Checkout".getBytes());
+        System.setIn(in);
+        library.bookList();
+        assertThat(outContent.toString(), containsString("Check your books"));
     }
 
     @Test
     public void CustomerShouldAbleToSeeSuccessfulMessageWhenCheckOutBooksSucceed(){
-
+        ByteArrayInputStream in = new ByteArrayInputStream("盗墓笔记".getBytes());
+        System.setIn(in);
+        library.checkOut();
+        assertThat(outContent.toString(), containsString("Thank you! Enjoy the book"));
     }
 
     @Test
-    public void CustomerShouldAbleToSeeUnsuccessfulMessageWhenCheckOutBooksFailed(){
+    public void CustomerShouldSeeFailedMessageWhenCheckOutBooksFailed(){
+        ByteArrayInputStream in = new ByteArrayInputStream("gakl".getBytes());
+        System.setIn(in);
+        library.checkOut();
+        assertThat(outContent.toString(), containsString("That book is not available"));
+    }
 
+    @Test
+    public void ShouldBeAbleToBackToBookListWhenCheckout() {
+        ByteArrayInputStream in = new ByteArrayInputStream("Back".getBytes());
+        System.setIn(in);
+        library.checkOut();
+        assertThat(outContent.toString(), containsString(bookMessage));
+    }
+
+    @Test
+    public void ShouldBeAbleToReturnBook(){
+        ByteArrayInputStream in = new ByteArrayInputStream("Return".getBytes());
+        System.setIn(in);
+        library.bookList();
+        assertThat(outContent.toString(), containsString("Return your books"));
+    }
+
+    @Test
+    public void CustomerShouldAbleToSeeSuccessfulMessageWhenReturnBooksSucceed(){
+        ByteArrayInputStream in = new ByteArrayInputStream("盗墓笔记".getBytes());
+        System.setIn(in);
+        library.checkOut();
+        ByteArrayInputStream inAgain = new ByteArrayInputStream("盗墓笔记".getBytes());
+        System.setIn(inAgain);
+        library.returnBook();
+        assertThat(outContent.toString(), containsString("Thank you for returning the book."));
+    }
+
+    @Test
+    public void CustomerShouldSeeFailedMessageWhenReturnBooksFailed(){
+        ByteArrayInputStream in = new ByteArrayInputStream("gakl".getBytes());
+        System.setIn(in);
+        library.returnBook();
+        assertThat(outContent.toString(), containsString("That is not a valid book to return."));
+    }
+
+    @Test
+    public void ShouldBeAbleToBackToBookListWhenReturn(){
+        ByteArrayInputStream in = new ByteArrayInputStream("Back".getBytes());
+        System.setIn(in);
+        library.returnBook();
+        assertThat(outContent.toString(), containsString(bookMessage));
     }
 
 }
