@@ -69,10 +69,10 @@ public class BibliotecaTest {
     }
 
     @Test
-    public void ShouldSeeMainMenuAndRaiseAnExceptionWhenInputWrongMessageInMenue(){
+    public void ShouldRaiseAnExceptionWhenInputWrongMessageInMenue(){
         ByteArrayInputStream in = new ByteArrayInputStream("My string".getBytes());
         System.setIn(in);
-        library.menuCommand();
+        library.libraryMenu();
         assertThat(outContent.toString(), containsString("Select a valid option!"));
     }
 
@@ -80,7 +80,7 @@ public class BibliotecaTest {
     public void ShouldShowBookListWhenInputBookList(){
         ByteArrayInputStream in = new ByteArrayInputStream("List Books".getBytes());
         System.setIn(in);
-        library.menuCommand();
+        library.libraryMenu();
         assertThat(outContent.toString(), containsString(bookMessage));
     }
 
