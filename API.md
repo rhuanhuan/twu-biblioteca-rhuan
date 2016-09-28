@@ -16,6 +16,9 @@ Welcome to our library!
 **`List Books`**
 Show book list
 
+**`List Movies`**
+Show movie list
+
 **`Quit`**
 Quit the application
 

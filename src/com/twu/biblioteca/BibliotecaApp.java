@@ -6,10 +6,12 @@ import java.util.Scanner;
 public class BibliotecaApp {
 
     public BookList bookInfo;
+    public MovieList movieInfo;
     public String appCommand = null;
 
-    public BibliotecaApp(String path) {
-        this.bookInfo = new BookList(path);
+    public BibliotecaApp(String path1,String path2) {
+        this.bookInfo = new BookList(path1);
+        this.movieInfo = new MovieList(path2);
     }
 
     public void showWelcomeMessage() {
@@ -17,7 +19,7 @@ public class BibliotecaApp {
         System.out.println(welcomeMessage);
     }
 
-    public void bookList() {
+    public void bookListMenu() {
         bookInfo.listBookMessage();
         listLabel:
         while (true) {
@@ -42,6 +44,10 @@ public class BibliotecaApp {
         }
     }
 
+    public void movieListMenu(){
+        movieInfo.listMovieMessage();
+    }
+
     public void checkOut() {
         System.out.println("###################\n" + "#Check your books#\n" + "*******************");
         String[] bookNameInfo = bookInfo.getNameList();
@@ -58,7 +64,7 @@ public class BibliotecaApp {
             } else if (checkedBook != null && (Objects.equals(checkedBook.getStatus(), "Denied"))) {
                 System.out.println("The book had been borrowed");
             } else if (Objects.equals(appCommand, "Back")) {
-                bookList();
+                bookListMenu();
                 break;
             } else {
                 System.out.println("That book is not available.");
@@ -80,7 +86,7 @@ public class BibliotecaApp {
                 System.out.println("Thank you for returning the book.");
                 returnedBook.changeStatus();
             } else if (appCommand.equals("Back")) {
-                bookList();
+                bookListMenu();
                 break;
             } else {
                 System.out.println("That is not a valid book to return.");
@@ -100,7 +106,10 @@ public class BibliotecaApp {
                 break;
             switch (appCommand) {
                 case "List Books":
-                    bookList();
+                    bookListMenu();
+                    break label;
+                case "List Movies":
+                    movieListMenu();
                     break label;
                 case "Quit":
                     System.out.println("Thank you for use!");

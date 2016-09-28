@@ -14,8 +14,9 @@ import static org.junit.Assert.assertThat;
 
 public class BibliotecaTest {
 
-    private String path = "/Users/rhuan/IdeaProjects/TWU_Biblioteca-master/book.json";
-    private BibliotecaApp library = new BibliotecaApp(path);
+    private String path1 = "/Users/rhuan/IdeaProjects/TWU_Biblioteca-master/book.json";
+    private String path2 = "/Users/rhuan/IdeaProjects/TWU_Biblioteca-master/moive.json";
+    private BibliotecaApp library = new BibliotecaApp(path1,path2);
 
     private String bookMessage = "name: Rails之道, year:2000, author:(美)Obie Fernandez\n" +
             "name:Programming Ruby中文版, year:2000, author:托马斯\n" +
@@ -97,7 +98,7 @@ public class BibliotecaTest {
     public void ShouldBeAbleToCheckoutBook(){
         ByteArrayInputStream in = new ByteArrayInputStream("Checkout".getBytes());
         System.setIn(in);
-        library.bookList();
+        library.bookListMenu();
         assertThat(outContent.toString(), containsString("Check your books"));
     }
 
@@ -129,7 +130,7 @@ public class BibliotecaTest {
     public void ShouldBeAbleToReturnBook(){
         ByteArrayInputStream in = new ByteArrayInputStream("Return".getBytes());
         System.setIn(in);
-        library.bookList();
+        library.bookListMenu();
         assertThat(outContent.toString(), containsString("Return your books"));
     }
 
