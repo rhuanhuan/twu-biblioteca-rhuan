@@ -46,4 +46,14 @@ class BookList {
         }
         return null;
     }
+
+    public void listBookMessage() {
+        System.out.println("******************\n" + "----Books List----\n" + "******************");
+        int listLength = booksMessage.length;
+        for (int i = 0; i < listLength; i++) {
+            if ("Allowed".equals(booksMessage[i].getStatus())) {
+                System.out.print("name:" + booksMessage[i].getName() + ", " + "year:" + booksMessage[i].getYear() + ", " + "author:" + booksMessage[i].getAuthor() + "\n");
+            }
+        }
+    }
 }

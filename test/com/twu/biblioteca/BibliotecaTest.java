@@ -56,13 +56,13 @@ public class BibliotecaTest {
 
     @Test
     public void ShouldShowBookList() {
-        library.listBookMessage();
+        library.bookInfo.listBookMessage();
         assertThat(outContent.toString(),containsString(bookMessage));
     }
 
     @Test
     public void ShouldHaveBookDetails() {
-        library.listBookMessage();
+        library.bookInfo.listBookMessage();
         assertThat(bookMessage, containsString("name"));
         assertThat(bookMessage, containsString("year"));
         assertThat(bookMessage, containsString("author"));
@@ -159,5 +159,4 @@ public class BibliotecaTest {
         library.returnBook();
         assertThat(outContent.toString(), containsString(bookMessage));
     }
-
 }

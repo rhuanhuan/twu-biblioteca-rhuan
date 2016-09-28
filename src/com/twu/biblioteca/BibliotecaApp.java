@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class BibliotecaApp {
 
-    private BookList bookInfo;
+    public BookList bookInfo;
     public String appCommand = null;
 
     public BibliotecaApp(String path) {
@@ -17,19 +17,8 @@ public class BibliotecaApp {
         System.out.println(welcomeMessage);
     }
 
-    public void listBookMessage() {
-        System.out.println("******************\n" + "----Books List----\n" + "******************");
-        int listLength = bookInfo.getListSize();
-        Book[] bookMessage = bookInfo.getbooksMessage();
-        for (int i = 0; i < listLength; i++) {
-            if ("Allowed".equals(bookMessage[i].getStatus())) {
-                System.out.print("name:" + bookMessage[i].getName() + ", " + "year:" + bookMessage[i].getYear() + ", " + "author:" + bookMessage[i].getAuthor() + "\n");
-            }
-        }
-    }
-
     public void bookList() {
-        listBookMessage();
+        bookInfo.listBookMessage();
         listLabel:
         while (true) {
             Scanner scan = new Scanner(System.in);
