@@ -106,7 +106,7 @@ public class BibliotecaTest {
     public void CustomerShouldAbleToSeeSuccessfulMessageWhenCheckOutBooksSucceed(){
         ByteArrayInputStream in = new ByteArrayInputStream("盗墓笔记".getBytes());
         System.setIn(in);
-        library.checkOut();
+        library.checkOutBook();
         assertThat(outContent.toString(), containsString("Thank you! Enjoy the book"));
     }
 
@@ -114,7 +114,7 @@ public class BibliotecaTest {
     public void CustomerShouldSeeFailedMessageWhenCheckOutBooksFailed(){
         ByteArrayInputStream in = new ByteArrayInputStream("gakl".getBytes());
         System.setIn(in);
-        library.checkOut();
+        library.checkOutBook();
         assertThat(outContent.toString(), containsString("That book is not available"));
     }
 
@@ -122,7 +122,7 @@ public class BibliotecaTest {
     public void ShouldBeAbleToBackToBookListWhenCheckout() {
         ByteArrayInputStream in = new ByteArrayInputStream("Back".getBytes());
         System.setIn(in);
-        library.checkOut();
+        library.checkOutBook();
         assertThat(outContent.toString(), containsString(bookMessage));
     }
 
@@ -138,7 +138,7 @@ public class BibliotecaTest {
     public void CustomerShouldAbleToSeeSuccessfulMessageWhenReturnBooksSucceed(){
         ByteArrayInputStream in = new ByteArrayInputStream("盗墓笔记".getBytes());
         System.setIn(in);
-        library.checkOut();
+        library.checkOutBook();
         ByteArrayInputStream inAgain = new ByteArrayInputStream("盗墓笔记".getBytes());
         System.setIn(inAgain);
         library.returnBook();
